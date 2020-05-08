@@ -1,5 +1,5 @@
 const chatbot = require('../chatbot/chatbot')
-const twilio = require('../send_whatsapp')
+const client = require('twilio')(accountSid, authToken);
 
 module.exports = app => {
 
@@ -17,11 +17,10 @@ module.exports = app => {
 		res.send(responses[0].queryResult);
 	});
 	app.post('/api/whatsapp_query', async (req, res) =>{
-		console.log(req.body);
-		var msgFrom = req.body.From;
-		var msgBody = req.body.Body;
-
-		let responses = await chatbot.textQuery(req.body.Body, req.body.parameters)
-		res.send('<Response> <Message> ${responses}</Message></Response>')
-	})
+		client.messages.create({
+			from: 'whatsapp:+14155238886',
+			to: 'whatsapp:'+process.env.MY_PHONE_NUMBER,
+			body: "Hello!"
+		})
+		
 }
