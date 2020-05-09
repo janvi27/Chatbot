@@ -22,5 +22,6 @@ module.exports = app => {
 			to: 'whatsapp:'+process.env.MY_PHONE_NUMBER,
 			body: "Hello!"
 		})
-		
+	}
+
 }
