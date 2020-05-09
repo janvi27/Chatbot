@@ -24,7 +24,8 @@ module.exports = app => {
 		res.send(responses[0].queryResult);
 	});
 	app.post('/api/whatsapp_query', async (req, res) =>{
-		let responses = await chatbot.textQuery(req.body.text, req.body.parameters);
+		let message = await chatbot.textQuery(req.body.Body, req.body.parameters);
+		res.send(message[0].queryResult);
 		client.messages.create({
 			from: 'whatsapp:+14155238886',
 			to: 'whatsapp:'+myPhoneNumber,
