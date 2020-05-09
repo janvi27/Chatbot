@@ -3,6 +3,7 @@ const config = require('../config/keys');
 
 const twilioAccountID = config.twilioAccountID;
 const twilioAuthToken = config.twilioAuthToken;
+const myPhoneNumber = config.myPhoneNumber;
 
 const client = require('twilio')(twilioAccountID,twilioAuthToken);
 
@@ -26,7 +27,7 @@ module.exports = app => {
 		let responses = await chatbot.textQuery(req.body.text)
 		client.messages.create({
 			from: 'whatsapp:+14155238886',
-			to: 'whatsapp:'+process.env.MY_PHONE_NUMBER,
+			to: 'whatsapp:'+myPhoneNumber,
 			body: responses
 		}).then(message => res.send(message.sid));
 	});
