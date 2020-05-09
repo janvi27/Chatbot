@@ -1,5 +1,4 @@
 const chatbot = require('../chatbot/chatbot')
-const client = require('twilio')(accountSid, authToken);
 
 module.exports = app => {
 
@@ -22,6 +21,6 @@ module.exports = app => {
 			to: 'whatsapp:'+process.env.MY_PHONE_NUMBER,
 			body: "Hello!"
 		})
-	}
-
+	});
 }
+
