@@ -1,4 +1,11 @@
-const chatbot = require('../chatbot/chatbot')
+const chatbot = require('../chatbot/chatbot');
+const config = require('../config/keys');
+
+const twilioAccountID = config.twilioAccountID;
+const twilioAuthToken = config.twilioAuthToken;
+
+const client = require('twilio')(twilioAccountID,twilioAuthToken);
+
 
 module.exports = app => {
 
@@ -16,11 +23,12 @@ module.exports = app => {
 		res.send(responses[0].queryResult);
 	});
 	app.post('/api/whatsapp_query', async (req, res) =>{
+		let responses = await chatbot.textQuery(req.body.text)
 		client.messages.create({
 			from: 'whatsapp:+14155238886',
 			to: 'whatsapp:'+process.env.MY_PHONE_NUMBER,
-			body: "Hello!"
-		})
+			body: responses
+		}).then(message => res.send(message.sid));
 	});
 }
 
