@@ -3,6 +3,7 @@ const dialogflow = require('dialogflow');
 const structjson = require('./structjson')
 const config = require('../config/keys');
 
+
 const projectID = config.googleProjectID;
 
 const credentials = {
