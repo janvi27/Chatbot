@@ -55,7 +55,7 @@ module.exports = app => {
 		else if (type === "news") {
 			var spawn = require('child_process').spawn;
 			var sys = require('util');
-			var label = spawn('python3', ['./LinearSVC-Nodejs.py', req.body.Body]);
+			var label = spawn('python3', ['./SVM-Model.py', req.body.Body]);
 			label.stdout.pipe(process.stdout);
 			label.stderr.pipe(process.stderr);
 			label.stdout.on('data', (data) => {
