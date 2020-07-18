@@ -13,7 +13,7 @@ import sys
 
 
 model = pickle.load(open("SVM.sav", 'rb'))
-vocab = pickle.load(open("vocabulary.pk1", 'rb'))
+vocab = pickle.load(open("vocabulary.pkl", 'rb'))
 
 
 # In[6]:
