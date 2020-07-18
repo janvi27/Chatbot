@@ -40,7 +40,7 @@ vectorized_text = vector.transform(text)
 
 prediction = model.predict(vectorized_text)
 labels = ['Fake', 'Real', 'Mixture', 'Miscaptioned', 'Verified Scam']
-sys.stdout.write(labels(prediction[0]))
+sys.stdout.write(labels[prediction[0]])
 
 
 # In[ ]:
