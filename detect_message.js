@@ -5,7 +5,7 @@ module.exports = {
 			return "image";
 		}
 		else {
-			if (text.Body.length < 15)  {
+			if (text.Body.length < 30)  {
 				console.log("Text");
 				return "text";
 			}
