@@ -7,7 +7,6 @@
 from imutils.object_detection import non_max_suppression
 import numpy as np
 import argparse
-import time
 import cv2
 import os
 import pytesseract
@@ -48,7 +47,7 @@ def resize(filename):
 
 def EAST(image):
     blob = cv2.dnn.blobFromImage(image, 1.0, (W, H), (123.68, 116.78, 103.94), swapRB=True, crop=False)
-    net = cv2.dnn.readNet(os.path.abspath("frozen_east_text_detection.pb"))
+    net = cv2.dnn.readNet("frozen_east_text_detection.pb")
     layerNames = ["feature_fusion/Conv_7/Sigmoid","feature_fusion/concat_3"]
     net.setInput(blob)
     (scores, geometry) = net.forward(layerNames)
