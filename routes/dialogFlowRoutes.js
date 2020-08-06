@@ -6,7 +6,6 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 const twilioAccountID = config.twilioAccountID;
 const twilioAuthToken = config.twilioAuthToken;
-const myPhoneNumber = config.myPhoneNumber;
 
 const client = require('twilio')(twilioAccountID,twilioAuthToken);
 
